@@ -1,14 +1,16 @@
 'use strict';
 
 function cloneColumn(section) {
-  for (let i = 0; i < section.rows.length; i++) {
-    const row = section.rows[i];
+  Array.from(section.rows).forEach((row) => {
     const secondCell = row.cells[1];
     const lastCell = row.cells[row.cells.length - 1];
-    const clonedCell = secondCell.cloneNode(true);
 
-    row.insertBefore(clonedCell, lastCell);
-  }
+    if (secondCell && lastCell) {
+      const clonedCell = secondCell.cloneNode(true);
+
+      row.insertBefore(clonedCell, lastCell);
+    }
+  });
 }
 
 const thead = document.querySelector('thead');
