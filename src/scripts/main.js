@@ -1,7 +1,8 @@
 'use strict';
 
 function cloneColumn(section) {
-  Array.from(section.rows).forEach((row) => {
+  for (let i = 0; i < section.rows.length; i++) {
+    const row = section.rows[i];
     const secondCell = row.cells[1];
     const lastCell = row.cells[row.cells.length - 1];
 
@@ -10,7 +11,7 @@ function cloneColumn(section) {
 
       row.insertBefore(clonedCell, lastCell);
     }
-  });
+  }
 }
 
 const thead = document.querySelector('thead');
